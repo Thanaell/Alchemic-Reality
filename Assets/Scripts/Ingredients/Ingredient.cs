@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Ingredient : MonoBehaviour
 {
 
-    List<IngredientState> m_states;
+    List<IngredientState> m_states = new List<IngredientState>();
 
     public void setState(IngredientState ingredientState)
     {
@@ -14,8 +14,8 @@ public abstract class Ingredient : MonoBehaviour
 
     public virtual void Slice()
     {
-        //default slicing
-        this.transform.localScale = 0.5f * this.transform.localScale;
+        Debug.Log("base");
+        this.transform.localScale = 2f * this.transform.localScale;
         setState(IngredientState.SLICED);
     }
 }
