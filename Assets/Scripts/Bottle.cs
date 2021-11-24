@@ -16,4 +16,13 @@ public class Bottle : MonoBehaviour
     {
         //TODO : set m_effectToApply depending on ingredients
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        TestSubject testSubject = other.GetComponent<TestSubject>();
+        if (testSubject)
+        {
+            testSubject.applyEffect(m_effectToApply);
+        }
+    }
 }
