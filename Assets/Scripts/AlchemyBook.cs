@@ -29,6 +29,11 @@ public class AlchemyBook
     {
         ActionOnTestSubject action = DelDoNothing;
         ActionOnTestSubjectBook.Add(Effect.NO_EFFECT, action);
+
+        ActionOnTestSubject action2 = delegate (TestSubject testSubject)
+        {
+            Debug.Log("2nd way to do delegates, to test");
+        };
     }
 
     private static void registerRecipes()
