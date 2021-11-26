@@ -6,14 +6,16 @@ public class AlchemyBook
 {
 
     static Dictionary<Effect, string> ColorBook = new Dictionary<Effect, string>();
-    static Dictionary<Effect, string> AnimationTriggerBook = new Dictionary<Effect, string>();
+    static Dictionary<Effect, ActionOnTestSubject> ActionOnTestSubjectBook = new Dictionary<Effect, ActionOnTestSubject>();
 
     static List<KeyValuePair<List<Ingredient>, Effect>> RecipeBook = new List<KeyValuePair<List<Ingredient>, Effect>>();
+
+    public delegate void ActionOnTestSubject(TestSubject testSubject);
 
     static AlchemyBook()
     {
         registerColors();
-        registerAnimationTriggers();
+        registerActionOnTestSubject();
         registerRecipes();
     }
 
@@ -23,9 +25,10 @@ public class AlchemyBook
         ColorBook.Add(Effect.NO_EFFECT, "blue? I dont know change the color maybe");
     }
 
-    private static void registerAnimationTriggers()
+    private static void registerActionOnTestSubject()
     {
-        AnimationTriggerBook.Add(Effect.NO_EFFECT, "none");
+        ActionOnTestSubject action = DelDoNothing;
+        ActionOnTestSubjectBook.Add(Effect.NO_EFFECT, action);
     }
 
     private static void registerRecipes()
@@ -46,12 +49,12 @@ public class AlchemyBook
         return null;
     }
 
-    public static string SearchAnimationTrigger(Effect effect)
+    public static ActionOnTestSubject SearchActionOnTestSubject(Effect effect)
     {
-        string animationTrigger;
-        if (AnimationTriggerBook.TryGetValue(effect, out animationTrigger))
+        ActionOnTestSubject action;
+        if (ActionOnTestSubjectBook.TryGetValue(effect, out action))
         {
-            return animationTrigger;
+            return action;
         }
         return null;
     }
@@ -85,4 +88,11 @@ public class AlchemyBook
         }
         return identical;
     }
+
+
+    /*________________________Actions on testSubject page_______________________________________________________*/
+
+
+    public static void DelDoNothing(TestSubject testSubject){}
+
 }

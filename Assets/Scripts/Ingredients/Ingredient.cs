@@ -8,7 +8,7 @@ public abstract class Ingredient : MonoBehaviour
     List<IngredientState> m_states = new List<IngredientState>();
 
     [SerializeField]
-    protected Object m_Full, m_Sliced, m_Powder; //3D models
+    protected GameObject m_Full, m_Sliced, m_Powder; //3D models
     /// <summary>
     /// Texture for the burned models
     /// </summary>

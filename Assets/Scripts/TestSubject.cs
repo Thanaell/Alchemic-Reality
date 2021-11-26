@@ -7,6 +7,13 @@ public class TestSubject : MonoBehaviour
     [SerializeField]
     protected Animator animator;
 
+    public void Start()
+    {
+        //Save data
+    }
+
+
+
     public void Reset()
     {
         //TODO, in case the test subject die. Reset from the cage
@@ -14,9 +21,10 @@ public class TestSubject : MonoBehaviour
 
     public void applyEffect(Effect effect)
     {
-        switch (effect)
+        AlchemyBook.ActionOnTestSubject action = AlchemyBook.SearchActionOnTestSubject(effect);
+        if (action != null)
         {
-
+            action(this);
         }
     }
 }
