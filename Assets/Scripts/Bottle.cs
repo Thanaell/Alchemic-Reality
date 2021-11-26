@@ -5,24 +5,81 @@ using UnityEngine;
 public class Bottle : MonoBehaviour
 {
     Effect m_effectToApply;
-   public void createPotion(Cauldron cauldron)
+
+    private static Dictionary<string, Material> PotionColor = new Dictionary<string, Material>();
+
+    private bool m_isWater = true;
+
+    private bool m_justCreated = false;
+
+    static Bottle()
     {
-        List<Ingredient> ingredients = cauldron.GetIngredients();
-        mixIngredients(ingredients);
-        cauldron.setUsable(false);
+        //TODO fill in the potion colors (in PtionColor), with the key corresponding to the AlchemyBook
     }
 
-    public void mixIngredients(List<Ingredient> ingredients)
+   public void createPotion(Cauldron cauldron)
     {
-        //TODO : set m_effectToApply depending on ingredients
+        computeEffect(cauldron.mixIngredients());
+    }
+
+
+    public void computeEffect(Effect effect)
+    {
+        m_effectToApply = effect;
+        Material newMaterial = null;
+        if (PotionColor.TryGetValue(AlchemyBook.SearchColor(m_effectToApply), out newMaterial))
+        {
+            //TODO indispensable : change color/texture of potion to match the effect
+        }
+
+    }
+
+    private void usePotion(TestSubject testSubject)
+    {
+        testSubject.applyEffect(m_effectToApply);
+        m_isWater = true;
+        //TODO indispensable reset the potion
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        TestSubject testSubject = other.GetComponent<TestSubject>();
-        if (testSubject)
+        if (other.gameObject.layer == LayerMask.NameToLayer("TestSubject"))
         {
-            testSubject.applyEffect(m_effectToApply);
+            TestSubject testSubject = other.GetComponent<TestSubject>();
+            if (testSubject)
+            {
+                usePotion(testSubject);
+                
+            }
+
+        } else if (other.gameObject.layer == LayerMask.NameToLayer("Cauldron"))
+        {
+            Cauldron cauldron = other.GetComponent<Cauldron>();
+            if (cauldron)
+            {
+                if (m_isWater)
+                {
+                    createPotion(cauldron);
+                    m_isWater = false;
+                    m_justCreated = true;
+                    cauldron.ResetIngredients();
+                }
+            }
+
+        }
+        
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        Cauldron cauldron = other.GetComponent<Cauldron>();
+        if (cauldron)
+        {
+            if (! m_isWater && m_justCreated)
+            {
+                m_justCreated = false; //To avoid reseting the ingredients if we put and remove a potion in the cauldron
+                cauldron.ResetIngredients();
+            }
         }
     }
 }

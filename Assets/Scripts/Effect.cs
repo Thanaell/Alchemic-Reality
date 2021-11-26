@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum Effect
 {
-
+    NO_EFFECT
 }

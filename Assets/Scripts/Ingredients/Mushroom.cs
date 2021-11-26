@@ -4,11 +4,40 @@ using UnityEngine;
 
 public class Mushroom : Ingredient
 {
-    public override void Slice()
+    
+    /*[SerializeField]
+    private Object Full, Sliced, Powder;
+    [SerializeField]
+    private Material Burned;
+
+    private Object currentModel;*/
+    public override bool Slice()
     {
-        Debug.Log("derived");
+        //Debug.Log("derived");
         //mushroom slicing
-        this.transform.localScale = 0.5f * this.transform.localScale;
-        setState(IngredientState.SLICED);
+        if (base.Slice())
+        {
+            this.transform.localScale = 0.5f * this.transform.localScale;
+            return true;
+        }
+        return false;
+    }
+
+    public override void Grind()
+    {
+        base.Grind();
+        //Mushroom grind
+    }
+
+    public override void Burn()
+    {
+        base.Burn();
+        //Mushroom burn
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+        //transform
     }
 }
