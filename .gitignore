@@ -17,6 +17,7 @@
 /[Pp]ackages/
 
 # Other ignored files
+/[Aa]ssets/Dependencies/
 .DS_Store
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
