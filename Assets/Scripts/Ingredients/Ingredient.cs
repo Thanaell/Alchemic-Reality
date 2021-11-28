@@ -13,7 +13,7 @@ public abstract class Ingredient : MonoBehaviour
     /// Texture for the burned models
     /// </summary>
     [SerializeField]
-    protected Material m_Burned; //Burn textue. Maybe 1 for each 3D model ? Or just change the color
+    protected Material m_Burned; //Burn texture. Maybe 1 for each 3D model ? Or just change the color
 
     protected Object m_currentModel;
 
@@ -22,6 +22,9 @@ public abstract class Ingredient : MonoBehaviour
         if (m_Full)
         {
             m_currentModel = m_Full;
+        } else
+        {
+            m_currentModel = GetComponent<GameObject>();
         }
     }
 
