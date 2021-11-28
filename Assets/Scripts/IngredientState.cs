@@ -4,5 +4,5 @@ using UnityEngine;
 
 public enum IngredientState
 {
-    FULL, SLICED
+    FULL, SLICED, BURNED, POWDER
 }

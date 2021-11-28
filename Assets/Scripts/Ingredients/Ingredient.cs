@@ -7,15 +7,70 @@ public abstract class Ingredient : MonoBehaviour
 
     List<IngredientState> m_states = new List<IngredientState>();
 
+    [SerializeField]
+    protected GameObject m_Full, m_Sliced, m_Powder; //3D models
+    /// <summary>
+    /// Texture for the burned models
+    /// </summary>
+    [SerializeField]
+    protected Material m_Burned; //Burn texture. Maybe 1 for each 3D model ? Or just change the color
+
+    protected Object m_currentModel;
+
+    public void Start()
+    {
+        if (m_Full)
+        {
+            m_currentModel = m_Full;
+        } else
+        {
+            m_currentModel = GetComponent<GameObject>();
+        }
+    }
+
     public void setState(IngredientState ingredientState)
     {
         m_states.Add(ingredientState);
     }
 
-    public virtual void Slice()
+    public virtual void Reset()
     {
-        Debug.Log("base");
-        this.transform.localScale = 2f * this.transform.localScale;
-        setState(IngredientState.SLICED);
+        m_states.Clear();
+        setState(IngredientState.FULL);
+    }
+
+    public virtual bool Slice()
+    {
+        //Debug.Log("base");
+        if (!m_states.Contains(IngredientState.POWDER))
+        {
+            setState(IngredientState.SLICED);
+            return true;
+        }
+        return false;
+        
+    }
+
+    public virtual void Grind()
+    {
+        m_states.Remove(IngredientState.SLICED);
+        setState(IngredientState.POWDER);
+    }
+
+    public virtual void Burn()
+    {
+        setState(IngredientState.BURNED);
+    }
+
+
+
+    /// <summary>
+    /// Equals
+    /// </summary>
+    /// <param name="ingredient"></param>
+    /// <returns></returns>
+    public bool Correspond(Ingredient ingredient)
+    {
+        return false;
     }
 }
