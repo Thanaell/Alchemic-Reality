@@ -1,10 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
+using System.Collections.Generic;
 
+enum IngredientType
+{
+    MUSHROOM, FLOWER, ROOT
+}
 public abstract class Ingredient : MonoBehaviour
 {
-
+    [SerializeField]
+    private IngredientType m_type;
     List<IngredientState> m_states = new List<IngredientState>();
 
     [SerializeField]
@@ -69,8 +76,19 @@ public abstract class Ingredient : MonoBehaviour
     /// </summary>
     /// <param name="ingredient"></param>
     /// <returns></returns>
-    public bool Correspond(Ingredient ingredient)
+    public bool Equals(Ingredient ingredient)
     {
-        return false;
+        if (m_type != ingredient.m_type)
+        {
+            return false;
+        }
+        if( m_states.OrderBy(x => x).SequenceEqual(ingredient.m_states.OrderBy(y => y)))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

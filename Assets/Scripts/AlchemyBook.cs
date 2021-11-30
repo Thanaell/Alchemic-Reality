@@ -85,7 +85,7 @@ public class AlchemyBook
         {
             foreach(Ingredient ingredient2 in list2)
             {
-                if(!ingredient1.Correspond(ingredient2))
+                if(!ingredient1.Equals(ingredient2))
                 {
                     identical = false;
                 }
