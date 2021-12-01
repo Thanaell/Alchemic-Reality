@@ -1,13 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using System.Collections.Generic;
 
 enum IngredientType
 {
     MUSHROOM, FLOWER, ROOT
 }
+
+[System.Serializable]
+public struct BurnedMaterials
+{
+    public Material burnedFull;
+    public Material burnedSliced;
+    public Material burnedPowder;
+}
+
 public abstract class Ingredient : MonoBehaviour
 {
     [SerializeField]
@@ -15,20 +22,21 @@ public abstract class Ingredient : MonoBehaviour
     List<IngredientState> m_states = new List<IngredientState>();
 
     [SerializeField]
-    protected GameObject m_Full, m_Sliced, m_Powder; //3D models
-    /// <summary>
-    /// Texture for the burned models
-    /// </summary>
-    [SerializeField]
-    protected Material m_Burned; //Burn texture. Maybe 1 for each 3D model ? Or just change the color
+    private GameObject baseGameObject; //The first game object, the one added in the editor
 
-    protected Object m_currentModel;
+    [SerializeField]
+    protected GameObject m_Full, m_Sliced, m_Powder; //Prefabs
+
+    [SerializeField]
+    protected BurnedMaterials m_Burned;
+
+    protected GameObject m_currentModel;
 
     public void Start()
     {
-        if (m_Full)
+        if (baseGameObject)
         {
-            m_currentModel = m_Full;
+            m_currentModel = baseGameObject;
         } else
         {
             m_currentModel = GetComponent<GameObject>();
@@ -40,6 +48,11 @@ public abstract class Ingredient : MonoBehaviour
         m_states.Add(ingredientState);
     }
 
+    public bool StateContains(IngredientState state)
+    {
+        return m_states.Contains(state);
+    }
+
     public virtual void Reset()
     {
         m_states.Clear();
@@ -49,7 +62,7 @@ public abstract class Ingredient : MonoBehaviour
     public virtual bool Slice()
     {
         //Debug.Log("base");
-        if (!m_states.Contains(IngredientState.POWDER))
+        if (!StateContains(IngredientState.POWDER) && ! StateContains(IngredientState.SLICED))
         {
             setState(IngredientState.SLICED);
             return true;

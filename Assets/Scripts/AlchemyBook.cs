@@ -80,18 +80,30 @@ public class AlchemyBook
 
     private static bool isIngredientListIdentic(List<Ingredient> list1, List<Ingredient> list2)
     {
-        bool identical = true;
+        if(list1.Capacity != list2.Capacity)
+        {
+            return false;
+        }
         foreach(Ingredient ingredient1 in list1)
         {
-            foreach(Ingredient ingredient2 in list2)
+            if(! IngredientContient(ingredient1, list2))
             {
-                if(!ingredient1.Equals(ingredient2))
-                {
-                    identical = false;
-                }
+                return false;
             }
         }
-        return identical;
+        return true;
+    }
+
+    private static bool IngredientContient(Ingredient ingredient, List<Ingredient> list)
+    {
+        foreach(Ingredient ing in list)
+        {
+            if (ing.Equals(ingredient))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 

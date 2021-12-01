@@ -7,7 +7,7 @@ public class Cage : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        TestSubject testSubject = other.GetComponent<TestSubject>();
-        testSubject.Reset();
+        TestSubject testSubject = other.GetComponentInChildren<TestSubject>();
+        testSubject.ChangeTestSubject();
     }
 }

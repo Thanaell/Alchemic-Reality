@@ -22,12 +22,9 @@ public class Slice : Action
 
     protected override void playAnimation(bool play)
     {
-        if(play)
+        if (m_animator)
         {
-
-        } else //stop
-        {
-
+            m_animator.SetBool("Slice", play);
         }
     }
 }

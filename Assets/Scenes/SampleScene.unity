@@ -1714,6 +1714,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mushroom
       objectReference: {fileID: 0}
+    - target: {fileID: 3070531718540738186, guid: fa822d901c687f94db02411ae4c496a6, type: 3}
+      propertyPath: baseGameObject
+      value: 
+      objectReference: {fileID: 1397281623}
     - target: {fileID: 5950827602345572376, guid: fa822d901c687f94db02411ae4c496a6, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1760,6 +1764,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa822d901c687f94db02411ae4c496a6, type: 3}
+--- !u!1 &1397281623 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1867680337096936932, guid: fa822d901c687f94db02411ae4c496a6, type: 3}
+  m_PrefabInstance: {fileID: 1397281622}
+  m_PrefabAsset: {fileID: 0}
 --- !u!21 &1627571909
 Material:
   serializedVersion: 6

@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Action : MonoBehaviour
 {
     [SerializeField]
-    protected Animator animator;
+    protected Animator m_animator;
     [SerializeField]
     private float waitingTimeSec = 2f; //Waiting time for the animation to execute
 
@@ -38,6 +38,8 @@ public abstract class Action : MonoBehaviour
             {
                 playAnimation(false);
                 actOn(manipulatedIngredient);
+                manipulatedIngredient = null;
+                timer = waitingTimeSec;
             }
         }
     }
@@ -45,14 +47,14 @@ public abstract class Action : MonoBehaviour
 
 
 
-        private void OnTriggerExit(Collider other)
+       /* private void OnTriggerExit(Collider other)
     {
             if (manipulatedIngredient)
             {
                 manipulatedIngredient = null;
                 timer = waitingTimeSec;
             }
-    }
+    }*/
 
 
     protected abstract void actOn(Ingredient ingredient);

@@ -1,11 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TestSubject : MonoBehaviour
 {
     [SerializeField]
-    protected Animator animator;
+    protected GameObject testSubject_Prefab;
+    
+    protected Animator m_animator;
+
+    protected GameObject m_model;
 
     public void Start()
     {
@@ -14,9 +16,17 @@ public class TestSubject : MonoBehaviour
 
 
 
-    public void Reset()
+    public void ChangeTestSubject()
     {
-        //TODO, in case the test subject die. Reset from the cage
+        if (testSubject_Prefab)
+        {
+            if (m_model)
+            {
+                Destroy(m_model);
+            }
+            m_model = Instantiate(testSubject_Prefab, GetComponent<Transform>()); //Instanciate as child
+            m_animator = m_model.GetComponentInChildren<Animator>();
+        }
     }
 
     public void applyEffect(Effect effect)
@@ -26,5 +36,15 @@ public class TestSubject : MonoBehaviour
         {
             action(this);
         }
+    }
+
+    public Animator GetAnimator()
+    {
+        return m_animator;
+    }
+
+    public GameObject GetModel()
+    {
+        return m_model;
     }
 }
