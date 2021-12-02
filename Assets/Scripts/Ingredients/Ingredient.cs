@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-enum IngredientType
+public enum IngredientType
 {
     MUSHROOM, FLOWER, ROOT
 }
@@ -103,5 +103,10 @@ public abstract class Ingredient : MonoBehaviour
         {
             return false;
         }
+    }
+
+    protected void setIngredientType(IngredientType ingredientType)
+    {
+        m_type = ingredientType;
     }
 }

@@ -16,7 +16,7 @@ public class TestSubject : MonoBehaviour
 
 
 
-    public void ChangeTestSubject()
+    public void FetchTestSubject()
     {
         if (testSubject_Prefab)
         {

@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class Mushroom : Ingredient
 {
-    
+
+    public void Start()
+    {
+        base.Start();
+        setIngredientType(IngredientType.MUSHROOM);
+    }
+
     public override bool Slice()
     {
         //Debug.Log("derived");

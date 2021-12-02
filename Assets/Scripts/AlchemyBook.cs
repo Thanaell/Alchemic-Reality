@@ -86,7 +86,7 @@ public class AlchemyBook
         }
         foreach(Ingredient ingredient1 in list1)
         {
-            if(! IngredientContient(ingredient1, list2))
+            if(! IngredientContains(ingredient1, list2))
             {
                 return false;
             }
@@ -94,7 +94,7 @@ public class AlchemyBook
         return true;
     }
 
-    private static bool IngredientContient(Ingredient ingredient, List<Ingredient> list)
+    private static bool IngredientContains(Ingredient ingredient, List<Ingredient> list)
     {
         foreach(Ingredient ing in list)
         {
