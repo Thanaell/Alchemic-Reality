@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Bottle : MonoBehaviour
 {
-    Effect m_effectToApply;
-
+    //Effect m_effectToApply;
+    Effect m_effectToApply = Effect.CHANGE_COLOR_TO_RED; //for test
     private static Dictionary<string, Material> PotionColor = new Dictionary<string, Material>();
 
     private bool m_isWater = true;

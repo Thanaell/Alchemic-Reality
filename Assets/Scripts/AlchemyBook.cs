@@ -30,6 +30,10 @@ public class AlchemyBook
         ActionOnTestSubject action = DelDoNothing;
         ActionOnTestSubjectBook.Add(Effect.NO_EFFECT, action);
 
+        // action change color to red
+        action = ChangeColorToRed;
+        ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_RED, action);
+
         ActionOnTestSubject action2 = delegate (TestSubject testSubject)
         {
             Debug.Log("2nd way to do delegates, to test");
@@ -111,5 +115,10 @@ public class AlchemyBook
 
 
     public static void DelDoNothing(TestSubject testSubject){}
-
+    public static void ChangeColorToRed(TestSubject testSubject) {
+        //need to get the child of the TestSubject object (=Capsule at the moment)
+        var testSubjectRenderer = testSubject.transform.GetChild(0).GetComponent<Renderer>();
+        testSubjectRenderer.material.color= Color.red;
+        Debug.Log("test subject color changed to red");
+    }
 }
