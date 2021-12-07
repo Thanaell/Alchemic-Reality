@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="vuforiaTestSubject" size="0.100000 0.116317" />
+    <ImageTarget name="vuforiaCage" size="0.100000 0.115862" />
+    <ImageTarget name="vuforiaFlower" size="0.100000 0.116743" />
+    <ImageTarget name="vuforiaHeat" size="0.100000 0.115851" />
+    <ImageTarget name="vuforiaRoot" size="0.100000 0.113532" />
+    <ImageTarget name="vuforiaFlask" size="0.100000 0.115972" />
+    <ImageTarget name="vuforiaCauldron" size="0.100000 0.118056" />
+    <ImageTarget name="vuforiaMushroom" size="0.100000 0.115668" />
+    <ImageTarget name="vuforiaSlice" size="0.100000 0.115862" />
+    <ImageTarget name="GrindCard" size="0.100000 0.115826" />
+  </Tracking>
+</QCARConfig>
