@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bottle : MonoBehaviour
 {
     //Effect m_effectToApply;
-    Effect m_effectToApply = Effect.CHANGE_COLOR_TO_RED; //for test
+    public Effect m_effectToApply = Effect.CHANGE_COLOR_TO_RED; //for test
     private static Dictionary<string, Material> PotionColor = new Dictionary<string, Material>();
 
     private bool m_isWater = true;
@@ -43,12 +43,14 @@ public class Bottle : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        timer = waitingTimeSec;
         if (other.gameObject.layer == LayerMask.NameToLayer("TestSubject"))
         {
             TestSubject testSubject = other.GetComponent<TestSubject>();
-            if (testSubject)
+            if (testSubject && readyForAction)
             {
                 usePotion(testSubject);
+                readyForAction = false;
                 
             }
 
@@ -68,6 +70,24 @@ public class Bottle : MonoBehaviour
 
         }
         
+    }
+
+    [SerializeField]
+    private float waitingTimeSec = 2f; //Waiting time for the bottle's action to execute
+    private bool readyForAction;
+    private float timer = 0;
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (timer > 0)
+        {
+            timer = timer - Time.fixedDeltaTime;
+        }
+        else
+        {
+            readyForAction = true;
+            timer = waitingTimeSec;
+        }
     }
 
     public void OnTriggerExit(Collider other)
