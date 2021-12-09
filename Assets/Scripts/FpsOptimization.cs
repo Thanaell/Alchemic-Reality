@@ -1,5 +1,5 @@
 using UnityEngine;
-using Vuforia;
+//using Vuforia;
 using UnityEngine.UI;
 using System.Collections;
 
