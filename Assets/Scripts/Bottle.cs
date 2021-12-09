@@ -12,15 +12,53 @@ public class Bottle : MonoBehaviour
 
     private bool m_justCreated = false;
 
+    /// <summary>
+    /// The content of the bottle which will change color
+    /// </summary>
+    [SerializeField]
+    private GameObject m_bottleFill;
+
+    /// <summary>
+    /// The materials for the color of the list. Order is important !
+    /// Element 0 is water
+    /// </summary>
+    [SerializeField]
+    private static List<Material> m_materialList = new List<Material>();
+
+
+    /// <summary>
+    /// Set to true to add a timer to the cauldron before creating the potion
+    /// </summary>
+    private bool isCauldronTimed = false;
+
     static Bottle()
     {
         //TODO fill in the potion colors (in PtionColor), with the key corresponding to the AlchemyBook
-        PotionColor.Add("water", null); //Change null material to water
+        int i = 0;
+
+        if(m_materialList.Capacity > i)
+        {
+            PotionColor.Add("water", m_materialList[i]);
+            i++;
+        }
+        if (m_materialList.Capacity > i)
+        {
+            //TODO as much as needed: PotionColor.Add("name of the color", m_materialList[i]);
+            i++;
+        }
+
     }
 
-   public void createPotion(Cauldron cauldron)
+   public bool createPotion(Cauldron cauldron)
     {
-        computeEffect(cauldron.mixIngredients());
+        Effect effect = cauldron.mixIngredients();
+        if (effect != Effect.NO_EFFECT)
+        {
+            computeEffect(effect);
+            return true;
+        }
+        return false;
+        
     }
 
 
@@ -54,7 +92,8 @@ public class Bottle : MonoBehaviour
 
         if (PotionColor.TryGetValue(color, out newMaterial))
         {
-            //TODO indispensable : change color/texture of potion to match the effect
+            Material currentMat = m_bottleFill.GetComponentInChildren<Material>();
+            currentMat = newMaterial;
         }
     }
 
@@ -64,47 +103,86 @@ public class Bottle : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("TestSubject"))
         {
             TestSubject testSubject = other.GetComponent<TestSubject>();
-            if (testSubject && readyForAction)
+            if (testSubject && ! isWaiting)
             {
-                usePotion(testSubject);
-                readyForAction = false;
+                isWaiting = true; //Start the timer
                 
             }
 
         } else if (other.gameObject.layer == LayerMask.NameToLayer("Cauldron"))
         {
             Cauldron cauldron = other.GetComponent<Cauldron>();
-            if (cauldron)
+            if(!isCauldronTimed)
             {
-                if (m_isWater)
+                if (cauldron)
                 {
-                    createPotion(cauldron);
-                    m_isWater = false;
-                    m_justCreated = true;
-                    cauldron.ResetIngredients();
+                    if (m_isWater)
+                    {
+                        if (createPotion(cauldron))
+                        {
+                            m_isWater = false;
+                            m_justCreated = true;
+                            cauldron.ResetIngredients();
+                        }
+                    }
+                }
+            } else
+            {
+                if (cauldron && !isWaiting)
+                {
+                    if (m_isWater)
+                    {
+                        isWaiting = true; //Start the timer
+                    }
                 }
             }
-
         }
-        
+
     }
 
     [SerializeField]
-    private float waitingTimeSec = 2f; //Waiting time for the bottle's action to execute
-    private bool readyForAction;
-    private float timer = 0;
+    private float waitingTimeSec = 2f; //Waiting time for the bottle's action to execute (testSubject & cauldron (if set to true))
+    private bool isWaiting;
+    private float timer;
 
     private void OnTriggerStay(Collider other)
     {
-        if (timer > 0)
+        if (isWaiting)
         {
-            timer = timer - Time.fixedDeltaTime;
+            if (timer > 0)
+            {
+                timer = timer - Time.fixedDeltaTime;
+            }
+            else
+            {
+                TestSubject testSubject = other.GetComponent<TestSubject>();
+                if (testSubject)
+                {
+                    usePotion(testSubject);
+                }
+
+                if (isCauldronTimed)
+                {
+                    Cauldron cauldron = other.GetComponent<Cauldron>();
+                    if (cauldron)
+                    {
+                        if (m_isWater)
+                        {
+                            if (createPotion(cauldron))
+                            {
+                                m_isWater = false;
+                                m_justCreated = true;
+                                cauldron.ResetIngredients();
+                            }
+                        }
+                    }
+                }
+                
+                isWaiting = false;
+                timer = waitingTimeSec;
+            }
         }
-        else
-        {
-            readyForAction = true;
-            timer = waitingTimeSec;
-        }
+
     }
 
     public void OnTriggerExit(Collider other)

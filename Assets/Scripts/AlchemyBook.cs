@@ -22,7 +22,7 @@ public class AlchemyBook
     private static void registerColors()
     {
         //The string is the key in the bottle color dictionnary. Must be synchronized
-        ColorBook.Add(Effect.NO_EFFECT, "blue? I dont know change the color maybe");
+        ColorBook.Add(Effect.NO_EFFECT, "water");
     }
 
     private static void registerActionOnTestSubject()
