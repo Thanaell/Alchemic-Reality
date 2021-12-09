@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 724fc1cdc0abb4b00ba67fd9df974a74
+labels:
+- ingredient
+- material
+- nature
+- plant
+- prop
+- root
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
