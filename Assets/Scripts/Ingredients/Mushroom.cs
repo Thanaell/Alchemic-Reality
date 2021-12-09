@@ -17,7 +17,7 @@ public class Mushroom : Ingredient
         //mushroom slicing
         if (base.Slice())
         {
-            this.transform.localScale = 0.5f * this.transform.localScale; //To edit out, only for tests
+            //this.transform.localScale = 0.5f * this.transform.localScale; //To edit out, only for tests
             if (m_Sliced)
             {
                 Destroy(m_currentModel);
