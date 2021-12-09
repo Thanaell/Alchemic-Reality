@@ -7,7 +7,7 @@ public class Cauldron : MonoBehaviour
     [SerializeField]
     private readonly int caudldronCapacity = 3;
 
-    List<Ingredient> m_ingredients;
+    List<Ingredient> m_ingredients = new List<Ingredient>();
     private void OnTriggerEnter(Collider other)
     {
         Ingredient ingredient = other.GetComponent<Ingredient>();
