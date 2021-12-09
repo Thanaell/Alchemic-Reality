@@ -38,6 +38,7 @@ public class AlchemyBook
         {
             Debug.Log("2nd way to do delegates, to test");
         };
+        //ActionOnTestSubjectBook.Add(Effect.NO_EFFECT, action2);
     }
 
     private static void registerRecipes()
@@ -117,7 +118,8 @@ public class AlchemyBook
     public static void DelDoNothing(TestSubject testSubject){}
     public static void ChangeColorToRed(TestSubject testSubject) {
         //need to get the child of the TestSubject object (=Capsule at the moment)
-        var testSubjectRenderer = testSubject.transform.GetChild(0).GetComponent<Renderer>();
+        //var testSubjectRenderer = testSubject.transform.GetChild(0).GetComponent<Renderer>();
+        var testSubjectRenderer = testSubject.GetModel().GetComponent<Renderer>();
         testSubjectRenderer.material.color= Color.red;
         Debug.Log("test subject color changed to red");
     }

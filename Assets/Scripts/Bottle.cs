@@ -15,6 +15,7 @@ public class Bottle : MonoBehaviour
     static Bottle()
     {
         //TODO fill in the potion colors (in PtionColor), with the key corresponding to the AlchemyBook
+        PotionColor.Add("water", null); //Change null material to water
     }
 
    public void createPotion(Cauldron cauldron)
@@ -26,19 +27,35 @@ public class Bottle : MonoBehaviour
     public void computeEffect(Effect effect)
     {
         m_effectToApply = effect;
-        Material newMaterial = null;
-        if (PotionColor.TryGetValue(AlchemyBook.SearchColor(m_effectToApply), out newMaterial))
-        {
-            //TODO indispensable : change color/texture of potion to match the effect
-        }
+        changeColor(AlchemyBook.SearchColor(m_effectToApply));
 
     }
 
     private void usePotion(TestSubject testSubject)
     {
         testSubject.applyEffect(m_effectToApply);
+        resetPotion();
+        
+    }
+
+    /// <summary>
+    /// Reset the potion color & effect. Set isWater to true;
+    /// </summary>
+    private void resetPotion()
+    {
         m_isWater = true;
-        //TODO indispensable reset the potion
+        m_effectToApply = Effect.NO_EFFECT;
+        changeColor("water");
+    }
+
+    private void changeColor(string color)
+    {
+        Material newMaterial = null;
+
+        if (PotionColor.TryGetValue(color, out newMaterial))
+        {
+            //TODO indispensable : change color/texture of potion to match the effect
+        }
     }
 
     public void OnTriggerEnter(Collider other)

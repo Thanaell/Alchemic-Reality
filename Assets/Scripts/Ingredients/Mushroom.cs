@@ -59,32 +59,7 @@ public class Mushroom : Ingredient
         
     }
 
-    private void addBurnTexture()
-    {
-        
-        if (StateContains(IngredientState.POWDER))
-        {
-            if (m_Burned.burnedPowder)
-            {
-                Material currentMat = m_currentModel.GetComponentInChildren<Material>();
-                currentMat = m_Burned.burnedPowder; //To test
-            }
-        } else if (StateContains(IngredientState.SLICED))
-        {
-            if (m_Burned.burnedSliced)
-            {
-                Material currentMat = m_currentModel.GetComponentInChildren<Material>();
-                currentMat = m_Burned.burnedSliced; //To test
-            }
-        } else
-        {
-            if (m_Burned.burnedFull)
-            {
-                Material currentMat = m_currentModel.GetComponentInChildren<Material>();
-                currentMat = m_Burned.burnedFull; //To test
-            }
-        }
-    }
+   
 
     public override void Reset()
     {

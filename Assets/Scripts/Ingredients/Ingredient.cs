@@ -7,28 +7,33 @@ public enum IngredientType
     MUSHROOM, FLOWER, ROOT
 }
 
-[System.Serializable]
+/*[System.Serializable]
 public struct BurnedMaterials
 {
     public Material burnedFull;
     public Material burnedSliced;
     public Material burnedPowder;
 }
-
+*/
 public abstract class Ingredient : MonoBehaviour
 {
     [SerializeField]
     private IngredientType m_type;
     List<IngredientState> m_states = new List<IngredientState>();
 
+    /// <summary>
+    /// The first game object, the one added in the editor.
+    /// Is needed to be able to delete it later, when the state of the ingredient change
+    /// </summary>
     [SerializeField]
-    private GameObject baseGameObject; //The first game object, the one added in the editor
+    private GameObject baseGameObject;
 
+    /// <summary>
+    /// Prefabs of the ingredient states. Used to change between states, will intanciate & destroy every time there is a change.
+    /// Each of them must have the MaterialManager script
+    /// </summary>
     [SerializeField]
-    protected GameObject m_Full, m_Sliced, m_Powder; //Prefabs
-
-    [SerializeField]
-    protected BurnedMaterials m_Burned;
+    protected GameObject m_Full, m_Sliced, m_Powder;
 
     protected GameObject m_currentModel;
 
@@ -82,6 +87,44 @@ public abstract class Ingredient : MonoBehaviour
         setState(IngredientState.BURNED);
     }
 
+    protected void addBurnTexture()
+    {
+
+        MaterialManager ingredientMaterial = m_currentModel.GetComponentInChildren<MaterialManager>();
+        if (ingredientMaterial)
+        {
+            ingredientMaterial.applyBurn();
+        }
+        else
+        {
+            Debug.Log("The script MaterialManager was not found in the prefab of the current state");
+        }
+
+
+        /*if (StateContains(IngredientState.POWDER))
+        {
+            if (m_Burned.burnedPowder)
+            {
+                Material currentMat = m_currentModel.GetComponentInChildren<Material>();
+                currentMat = m_Burned.burnedPowder; //To test
+            }
+        } else if (StateContains(IngredientState.SLICED))
+        {
+            if (m_Burned.burnedSliced)
+            {
+                Material currentMat = m_currentModel.GetComponentInChildren<Material>();
+                currentMat = m_Burned.burnedSliced; //To test
+            }
+        } else
+        {
+            if (m_Burned.burnedFull)
+            {
+                Material currentMat = m_currentModel.GetComponentInChildren<Material>();
+                currentMat = m_Burned.burnedFull; //To test
+            }
+        }
+        */
+    }
 
 
     /// <summary>

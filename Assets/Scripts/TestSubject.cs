@@ -11,7 +11,10 @@ public class TestSubject : MonoBehaviour
 
     public void Start()
     {
-        //Save data
+        if(!testSubject_Prefab)
+        {
+            m_model = transform.GetChild(0).gameObject;
+        }
     }
 
 
@@ -29,6 +32,10 @@ public class TestSubject : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Apply the effect of the AlchemyBook to the testSubject, depending on the action
+    /// </summary>
+    /// <param name="effect"></param>
     public void applyEffect(Effect effect)
     {
         AlchemyBook.ActionOnTestSubject action = AlchemyBook.SearchActionOnTestSubject(effect);
@@ -43,6 +50,11 @@ public class TestSubject : MonoBehaviour
         return m_animator;
     }
 
+    /// <summary>
+    /// The gameObject to use for manipulating the testSubject.
+    /// Is originaly created from the prefab given to the TestSubject script.
+    /// </summary>
+    /// <returns></returns>
     public GameObject GetModel()
     {
         return m_model;
