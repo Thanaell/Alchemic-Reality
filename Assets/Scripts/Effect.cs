@@ -18,5 +18,7 @@ public enum Effect
 	ANIM_JUMP,
 	ANIM_FALL,
 	ANIM_NOD, // with the head, to approve the potion
-	ANIM_LOOK_AT_STOMACH //because of stomachache
+	ANIM_LOOK_AT_STOMACH, //because of stomachache
+	ANIM_SPINNING,
+	ANIM_FLYING
 }
