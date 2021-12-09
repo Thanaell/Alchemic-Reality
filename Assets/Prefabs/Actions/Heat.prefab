@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4018167444763176}
   - component: {fileID: 33749003975207038}
   - component: {fileID: 23310387156610658}
+  - component: {fileID: 8038874528538670053}
+  - component: {fileID: 2045114920392206354}
   m_Layer: 0
   m_Name: Heat
   m_TagString: Untagged
@@ -82,6 +84,34 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &8038874528538670053
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529859801056418}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.3107787
+  m_Height: 9.01
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.64, z: 0}
+--- !u!114 &2045114920392206354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529859801056418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48fe9b1c7cb3c124799bb58e97731820, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 4373088604613518343}
+  waitingTimeSec: 2
 --- !u!1 &1719379423244450
 GameObject:
   m_ObjectHideFlags: 0

@@ -358,6 +358,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1586847056854638186, guid: 1948fd5c1167c714e94e3d92e065055d, type: 3}
+      propertyPath: m_Height
+      value: 1.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1586847056854638186, guid: 1948fd5c1167c714e94e3d92e065055d, type: 3}
+      propertyPath: m_Center.y
+      value: -1.32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1948fd5c1167c714e94e3d92e065055d, type: 3}
 --- !u!1 &1586847056318671689 stripped
@@ -394,6 +402,14 @@ PrefabInstance:
     - target: {fileID: 1838520796570159761, guid: 8a8fc9223fe6d5243aba6be520f26951, type: 3}
       propertyPath: m_Name
       value: Slice
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838520796570159764, guid: 8a8fc9223fe6d5243aba6be520f26951, type: 3}
+      propertyPath: m_Size.y
+      value: 1.52
+      objectReference: {fileID: 0}
+    - target: {fileID: 1838520796570159764, guid: 8a8fc9223fe6d5243aba6be520f26951, type: 3}
+      propertyPath: m_Center.y
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: 1838520796570159766, guid: 8a8fc9223fe6d5243aba6be520f26951, type: 3}
       propertyPath: m_RootOrder

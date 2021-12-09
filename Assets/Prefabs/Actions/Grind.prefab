@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: 1586847056854638184}
   - component: {fileID: 1586847056854638186}
   - component: {fileID: 1586847056854638185}
+  - component: {fileID: 6991428811177772555}
   m_Layer: 0
   m_Name: Grind
   m_TagString: Untagged
@@ -96,9 +97,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 2.01
-  m_Height: 5.77
+  m_Height: 3.94
   m_Direction: 1
-  m_Center: {x: 0.01, y: 0.15, z: -0.07}
+  m_Center: {x: 0.01, y: -0.72, z: -0.07}
 --- !u!54 &1586847056854638185
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -115,6 +116,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6991428811177772555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586847056854638167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c2bccdd4912e4240b511bdd97a9415d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 1586847056625780472}
+  waitingTimeSec: 2
 --- !u!1 &1586847058409953505
 GameObject:
   m_ObjectHideFlags: 0

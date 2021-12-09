@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 1838520796570159766}
   - component: {fileID: 1838520796570159764}
   - component: {fileID: 1838520796570159767}
+  - component: {fileID: 4507458556423105472}
   m_Layer: 0
   m_Name: Slice
   m_TagString: Untagged
@@ -76,8 +77,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10.23, y: 2.84, z: 4.94}
-  m_Center: {x: 1.21, y: 0, z: 0.34}
+  m_Size: {x: 10.23, y: 1.81, z: 4.94}
+  m_Center: {x: 1.21, y: -0.55, z: 0.34}
 --- !u!54 &1838520796570159767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -94,6 +95,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4507458556423105472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838520796570159761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b5527bc27a8e74684fe36181466e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 4092410424488101542}
+  waitingTimeSec: 2
 --- !u!1001 &314896661275557408
 PrefabInstance:
   m_ObjectHideFlags: 0
