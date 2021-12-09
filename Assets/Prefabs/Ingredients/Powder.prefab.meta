@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 3af5308c206054464b605ecacd356dd1
+labels:
+- ingredient
+- nature
+- potion
+- prefab
+- prop
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

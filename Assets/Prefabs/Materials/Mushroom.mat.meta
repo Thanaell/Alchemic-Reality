@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b58ad045db3664fdbbba29d368413ea1
+labels:
+- ingredient
+- material
+- mushroom
+- nature
+- plant
+- prop
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
