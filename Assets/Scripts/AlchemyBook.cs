@@ -30,9 +30,15 @@ public class AlchemyBook
         ActionOnTestSubject action = DelDoNothing;
         ActionOnTestSubjectBook.Add(Effect.NO_EFFECT, action);
 
-        // action change color to red
+        // action change color
         action = ChangeColorToRed;
         ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_RED, action);
+
+        action = ChangeColorToYellow;
+        ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_YELLOW, action);
+
+        action = ChangeColorToBlue;
+        ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_BLUE, action);
 
         ActionOnTestSubject action2 = delegate (TestSubject testSubject)
         {
@@ -119,8 +125,37 @@ public class AlchemyBook
     public static void ChangeColorToRed(TestSubject testSubject) {
         //need to get the child of the TestSubject object (=Capsule at the moment)
         //var testSubjectRenderer = testSubject.transform.GetChild(0).GetComponent<Renderer>();
-        var testSubjectRenderer = testSubject.GetModel().GetComponent<Renderer>();
-        testSubjectRenderer.material.color= Color.red;
+        /*var testSubjectRenderer = testSubject.GetModel().GetComponent<Renderer>();
+        testSubjectRenderer.material.color= Color.red;*/
+
         Debug.Log("test subject color changed to red");
+        changeColorTo(testSubject.gameObject, Color.red);
+    }
+
+    public static void ChangeColorToYellow(TestSubject testSubject)
+    {
+        changeColorTo(testSubject.gameObject, Color.yellow);
+    }
+
+    public static void ChangeColorToBlue(TestSubject testSubject)
+    {
+        changeColorTo(testSubject.gameObject, Color.blue);
+    }
+
+    private static void changeColorTo(GameObject obj, Color color) // recursively change color of all children of test subject
+    {
+        if (null == obj)
+            return;
+
+        foreach (Transform child in obj.transform)
+        {
+            if (null == child)
+                continue;
+            if (child.GetComponent<Renderer>())
+            {
+                child.GetComponent<Renderer>().material.color = color; //change color
+            }
+            changeColorTo(child.gameObject, color);
+        }
     }
 }
