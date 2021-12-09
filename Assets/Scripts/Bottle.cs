@@ -29,11 +29,12 @@ public class Bottle : MonoBehaviour
     /// <summary>
     /// Set to true to add a timer to the cauldron before creating the potion
     /// </summary>
-    private bool isCauldronTimed = false;
+    [SerializeField]
+    private bool CauldronHasTimer = false;
 
     static Bottle()
     {
-        //TODO fill in the potion colors (in PtionColor), with the key corresponding to the AlchemyBook
+        //TODO fill in the potion colors (in PotionColor), with the key corresponding to the AlchemyBook
         int i = 0;
 
         if(m_materialList.Capacity > i)
@@ -52,12 +53,8 @@ public class Bottle : MonoBehaviour
    public bool createPotion(Cauldron cauldron)
     {
         Effect effect = cauldron.mixIngredients();
-        if (effect != Effect.NO_EFFECT)
-        {
-            computeEffect(effect);
-            return true;
-        }
-        return false;
+        computeEffect(effect);
+        return effect != Effect.NO_EFFECT;
         
     }
 
@@ -82,8 +79,7 @@ public class Bottle : MonoBehaviour
     private void resetPotion()
     {
         m_isWater = true;
-        m_effectToApply = Effect.NO_EFFECT;
-        changeColor("water");
+        computeEffect(Effect.NO_EFFECT);
     }
 
     private void changeColor(string color)
@@ -112,7 +108,7 @@ public class Bottle : MonoBehaviour
         } else if (other.gameObject.layer == LayerMask.NameToLayer("Cauldron"))
         {
             Cauldron cauldron = other.GetComponent<Cauldron>();
-            if(!isCauldronTimed)
+            if(!CauldronHasTimer)
             {
                 if (cauldron)
                 {
@@ -122,8 +118,8 @@ public class Bottle : MonoBehaviour
                         {
                             m_isWater = false;
                             m_justCreated = true;
-                            cauldron.ResetIngredients();
                         }
+                        cauldron.ResetIngredients();
                     }
                 }
             } else
@@ -155,13 +151,14 @@ public class Bottle : MonoBehaviour
             }
             else
             {
+                isWaiting = false;
                 TestSubject testSubject = other.GetComponent<TestSubject>();
                 if (testSubject)
                 {
                     usePotion(testSubject);
                 }
 
-                if (isCauldronTimed)
+                if (CauldronHasTimer)
                 {
                     Cauldron cauldron = other.GetComponent<Cauldron>();
                     if (cauldron)
@@ -172,13 +169,13 @@ public class Bottle : MonoBehaviour
                             {
                                 m_isWater = false;
                                 m_justCreated = true;
-                                cauldron.ResetIngredients();
                             }
+                            cauldron.ResetIngredients();
                         }
                     }
                 }
                 
-                isWaiting = false;
+                
                 timer = waitingTimeSec;
             }
         }
