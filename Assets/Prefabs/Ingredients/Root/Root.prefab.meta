@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1a24f7f04c4014f31b63f594a74ef5b0
+labels:
+- ingredient
+- nature
+- plant
+- prefab
+- prop
+- root
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
