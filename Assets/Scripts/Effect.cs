@@ -20,5 +20,13 @@ public enum Effect
 	ANIM_NOD, // with the head, to approve the potion
 	ANIM_LOOK_AT_STOMACH, //because of stomachache
 	ANIM_SPINNING,
-	ANIM_FLYING
+	ANIM_FLYING,
+	ANIM_FLAPPING,
+	ANIM_JUMP_FLAPPING,
+	ANIM_LOOK_AT_STOMACH_GREEN, //stomachache + turning green
+	ANIM_FALL_RED, // falling + turning red
+	ANIM_SPINNING_YELLOW,
+	ANIM_SPINNING_FLAPPING,
+	ANIM_ROLLING,
+	ANIM_FLYING_SIZE_2, //flying + getting bigger
 }

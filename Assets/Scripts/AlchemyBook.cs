@@ -40,7 +40,6 @@ public class AlchemyBook
         action = delegate (TestSubject testSubject)
         {
             changeColorTo(testSubject.gameObject, Color.yellow);
-            Debug.Log("changed to yellow");
         };
         ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_YELLOW, action);
 
@@ -79,6 +78,81 @@ public class AlchemyBook
             testSubject.GetAnimator().Play("jump");
         };
         ActionOnTestSubjectBook.Add(Effect.ANIM_JUMP, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("fall");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_FALL, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("nod");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_NOD, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("stomach");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_LOOK_AT_STOMACH, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("spin");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_SPINNING, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("flapping");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_FLAPPING, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("jumpFlapping");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_JUMP_FLAPPING, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("stomach");
+            changeColorTo(testSubject.gameObject, Color.green);
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_LOOK_AT_STOMACH_GREEN, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("fall");
+            changeColorTo(testSubject.gameObject, Color.red);
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_FALL_RED, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("spin");
+            changeColorTo(testSubject.gameObject, Color.yellow);
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_SPINNING_YELLOW, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("spinFlapping");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_SPINNING_FLAPPING, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("roll");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_ROLLING, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("flySize2");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_FLYING_SIZE_2, action);
 
     }
 

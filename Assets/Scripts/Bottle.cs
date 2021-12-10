@@ -6,6 +6,7 @@ public class Bottle : MonoBehaviour
 {
     //Effect m_effectToApply;
     public Effect m_effectToApply = Effect.CHANGE_COLOR_TO_RED; //for test
+
     private static Dictionary<string, Material> PotionColor = new Dictionary<string, Material>();
 
     private bool m_isWater = true;
@@ -56,6 +57,23 @@ public class Bottle : MonoBehaviour
         computeEffect(effect);
         return effect != Effect.NO_EFFECT;
         
+    }
+
+    // gives a custom color for the Bottle based on its effect
+    // all cases not implemented yet
+    private void applyBottleColor()
+    {
+        switch (m_effectToApply)
+        {
+            case Effect.CHANGE_COLOR_TO_RED:
+                GetComponent<Renderer>().material.color = Color.red;
+                break;
+            case Effect.CHANGE_COLOR_TO_BLUE:
+                GetComponent<Renderer>().material.color = Color.blue;
+                break;
+            default:
+                break;
+        }
     }
 
 
