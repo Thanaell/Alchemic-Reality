@@ -31,20 +31,55 @@ public class AlchemyBook
         ActionOnTestSubjectBook.Add(Effect.NO_EFFECT, action);
 
         // action change color
-        action = ChangeColorToRed;
+        action = delegate (TestSubject testSubject)
+        {
+            changeColorTo(testSubject.gameObject, Color.red);
+        };
         ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_RED, action);
 
-        action = ChangeColorToYellow;
+        action = delegate (TestSubject testSubject)
+        {
+            changeColorTo(testSubject.gameObject, Color.yellow);
+            Debug.Log("changed to yellow");
+        };
         ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_YELLOW, action);
 
-        action = ChangeColorToBlue;
+        action = delegate (TestSubject testSubject)
+        {
+            changeColorTo(testSubject.gameObject, Color.blue);
+        };
         ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_BLUE, action);
 
-        ActionOnTestSubject action2 = delegate (TestSubject testSubject)
+        action = delegate (TestSubject testSubject)
         {
-            Debug.Log("2nd way to do delegates, to test");
+            testSubject.GetAnimator().Play("size_0_25");
         };
-        //ActionOnTestSubjectBook.Add(Effect.NO_EFFECT, action2);
+        ActionOnTestSubjectBook.Add(Effect.CHANGE_SIZE_TO_0_25, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("size_0_5");
+        };
+        ActionOnTestSubjectBook.Add(Effect.CHANGE_SIZE_TO_0_5, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("size_2");
+        };
+        ActionOnTestSubjectBook.Add(Effect.CHANGE_SIZE_TO_2, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("fly");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_FLYING, action);
+
+        action = delegate (TestSubject testSubject)
+        {
+            testSubject.GetAnimator().Play("jump");
+        };
+        ActionOnTestSubjectBook.Add(Effect.ANIM_JUMP, action);
+
     }
 
     private static void registerRecipes()

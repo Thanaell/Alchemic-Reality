@@ -11,9 +11,12 @@ public class TestSubject : MonoBehaviour
 
     public void Start()
     {
-        if(!testSubject_Prefab)
+        m_animator=GetComponentInChildren<Animator>();
+
+        if (!testSubject_Prefab)
         {
-            m_model = transform.GetChild(0).gameObject;
+            //not working anymore because model is not Capsule but Rabbit now
+            //m_model = transform.GetChild(0).gameObject;
         }
     }
 
