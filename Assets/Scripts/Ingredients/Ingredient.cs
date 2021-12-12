@@ -37,6 +37,8 @@ public class Ingredient : MonoBehaviour
 
     protected GameObject m_currentModel;
 
+    public Ingredient() { }
+
     public Ingredient(IngredientType type)
     {
         setIngredientType(type);
