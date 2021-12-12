@@ -158,7 +158,91 @@ public class AlchemyBook
 
     private static void registerRecipes()
     {
+        Ingredient mushroom = new Ingredient(IngredientType.MUSHROOM);
+        Ingredient flower = new Ingredient(IngredientType.FLOWER);
+        Ingredient root = new Ingredient(IngredientType.ROOT);
         RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>(), Effect.NO_EFFECT));
+        //Color
+        flower.Grind(); root.Slice(); mushroom.Grind(); mushroom.Burn();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom}, Effect.CHANGE_COLOR_TO_RED));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        flower.Grind(); mushroom.Slice(); root.Grind(); root.Burn();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.CHANGE_COLOR_TO_BLUE));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        flower.Grind(); mushroom.Slice(); root.Slice();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.CHANGE_COLOR_TO_YELLOW));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+        //Size
+        mushroom.Grind(); flower.Slice();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.CHANGE_SIZE_TO_2));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Grind(); root.Slice();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.CHANGE_SIZE_TO_0_5));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+        
+        mushroom.Grind(); root.Grind();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.CHANGE_SIZE_TO_0_25));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+        //Animations
+        mushroom.Slice(); root.Grind();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_JUMP));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Slice(); flower.Grind(); root.Slice();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_FALL));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Slice(); mushroom.Burn(); flower.Slice(); flower.Burn(); root.Slice(); root.Burn();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_NOD));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Burn(); flower.Slice(); flower.Burn(); root.Slice(); root.Burn();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_LOOK_AT_STOMACH));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Grind(); flower.Slice(); root.Slice();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_SPINNING));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Grind(); flower.Grind(); flower.Burn(); root.Grind();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_FLYING));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Grind(); flower.Grind(); root.Slice();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_FLAPPING));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Grind(); flower.Slice(); root.Grind();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_JUMP_FLAPPING));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        flower.Slice(); flower.Burn(); root.Slice(); root.Burn();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_LOOK_AT_STOMACH_GREEN));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Slice(); flower.Grind();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_FALL_RED));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Grind(); flower.Slice(); flower.Burn(); root.Slice();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_SPINNING_YELLOW));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Grind(); flower.Slice(); root.Slice(); root.Burn();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_SPINNING_FLAPPING));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        flower.Slice(); flower.Burn();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_ROLLING));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+
+        mushroom.Grind(); flower.Grind(); flower.Burn();
+        RecipeBook.Add(new KeyValuePair<List<Ingredient>, Effect>(new List<Ingredient>() { flower, root, mushroom }, Effect.ANIM_FLYING_SIZE_2));
+        flower = new Ingredient(IngredientType.FLOWER); mushroom = new Ingredient(IngredientType.MUSHROOM); root = new Ingredient(IngredientType.ROOT);
+        
     }
 
 

@@ -15,7 +15,7 @@ public struct BurnedMaterials
     public Material burnedPowder;
 }
 */
-public abstract class Ingredient : MonoBehaviour
+public class Ingredient : MonoBehaviour
 {
     [SerializeField]
     private IngredientType m_type;
@@ -36,6 +36,12 @@ public abstract class Ingredient : MonoBehaviour
     protected GameObject m_Full, m_Sliced, m_Powder;
 
     protected GameObject m_currentModel;
+
+    public Ingredient(IngredientType type)
+    {
+        setIngredientType(type);
+    }
+
 
     public void Start()
     {
@@ -89,16 +95,20 @@ public abstract class Ingredient : MonoBehaviour
 
     protected void addBurnTexture()
     {
+        if (m_currentModel)
+        {
+            MaterialManager ingredientMaterial = m_currentModel.GetComponentInChildren<MaterialManager>();
+            if (ingredientMaterial)
+            {
+                ingredientMaterial.applyBurn();
+            }
+            else
+            {
+                Debug.Log("The script MaterialManager was not found in the prefab of the current state");
+            }
+        }
 
-        MaterialManager ingredientMaterial = m_currentModel.GetComponentInChildren<MaterialManager>();
-        if (ingredientMaterial)
-        {
-            ingredientMaterial.applyBurn();
-        }
-        else
-        {
-            Debug.Log("The script MaterialManager was not found in the prefab of the current state");
-        }
+        
 
 
         /*if (StateContains(IngredientState.POWDER))
