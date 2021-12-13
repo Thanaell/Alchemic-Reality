@@ -127,6 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71915eb2ee0cf1f448f00a2a011119f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_effectToApply: 1
+  m_bottleFill: {fileID: 0}
+  CauldronHasTimer: 0
+  waitingTimeSec: 2
 --- !u!65 &1956376253103975313
 BoxCollider:
   m_ObjectHideFlags: 0

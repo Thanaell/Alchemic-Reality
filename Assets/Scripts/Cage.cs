@@ -8,6 +8,10 @@ public class Cage : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         TestSubject testSubject = other.GetComponentInChildren<TestSubject>();
-        testSubject.FetchTestSubject();
+        if (testSubject)
+        {
+            testSubject.FetchTestSubject();
+            Debug.Log("fetching test subject");
+        }
     }
 }
