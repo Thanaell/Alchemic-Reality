@@ -23,6 +23,12 @@ public class AlchemyBook
     {
         //The string is the key in the bottle color dictionnary. Must be synchronized
         ColorBook.Add(Effect.NO_EFFECT, "water");
+        ColorBook.Add(Effect.CHANGE_COLOR_TO_BLUE, "blue");
+        ColorBook.Add(Effect.CHANGE_COLOR_TO_YELLOW, "souffre");
+        ColorBook.Add(Effect.ANIM_SPINNING, "violet");
+        ColorBook.Add(Effect.ANIM_LOOK_AT_STOMACH_GREEN, "green");
+        ColorBook.Add(Effect.ANIM_ROLLING, "orange");
+        ColorBook.Add(Effect.CHANGE_COLOR_TO_RED, "red");
     }
 
     private static void registerActionOnTestSubject()

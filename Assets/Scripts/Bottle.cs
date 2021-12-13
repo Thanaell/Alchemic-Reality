@@ -24,7 +24,7 @@ public class Bottle : MonoBehaviour
     /// Element 0 is water
     /// </summary>
     [SerializeField]
-    private static List<Material> m_materialList = new List<Material>();
+    private List<Material> m_materialList = new List<Material>();
 
 
     /// <summary>
@@ -35,23 +35,53 @@ public class Bottle : MonoBehaviour
 
     static Bottle()
     {
+        
+
+    }
+
+    public void Start()
+    {
         //TODO fill in the potion colors (in PotionColor), with the key corresponding to the AlchemyBook
         int i = 0;
 
-        if(m_materialList.Capacity > i)
+        if (m_materialList.Capacity > i)
         {
             PotionColor.Add("water", m_materialList[i]);
             i++;
         }
         if (m_materialList.Capacity > i)
         {
-            //TODO as much as needed: PotionColor.Add("name of the color", m_materialList[i]);
+            PotionColor.Add("blue", m_materialList[i]);
             i++;
         }
-
+        if (m_materialList.Capacity > i)
+        {
+            PotionColor.Add("souffre", m_materialList[i]);
+            i++;
+        }
+        if (m_materialList.Capacity > i)
+        {
+            PotionColor.Add("violet", m_materialList[i]);
+            i++;
+        }
+        if (m_materialList.Capacity > i)
+        {
+            PotionColor.Add("green", m_materialList[i]);
+            i++;
+        }
+        if (m_materialList.Capacity > i)
+        {
+            PotionColor.Add("orange", m_materialList[i]);
+            i++;
+        }
+        if (m_materialList.Capacity > i)
+        {
+            PotionColor.Add("red", m_materialList[i]);
+            i++;
+        }
     }
 
-   public bool createPotion(Cauldron cauldron)
+    public bool createPotion(Cauldron cauldron)
     {
         Effect effect = cauldron.mixIngredients();
         computeEffect(effect);
