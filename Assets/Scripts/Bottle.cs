@@ -41,7 +41,8 @@ public class Bottle : MonoBehaviour
 
     public void Start()
     {
-        //TODO fill in the potion colors (in PotionColor), with the key corresponding to the AlchemyBook
+        applyBottleColor();
+        /*not needed anymore, see applyBottleColor(); instead
         int i = 0;
 
         if (m_materialList.Capacity > i)
@@ -78,7 +79,7 @@ public class Bottle : MonoBehaviour
         {
             PotionColor.Add("red", m_materialList[i]);
             i++;
-        }
+        }*/
     }
 
     public bool createPotion(Cauldron cauldron)
@@ -93,13 +94,66 @@ public class Bottle : MonoBehaviour
     // all cases not implemented yet
     private void applyBottleColor()
     {
+        Renderer bottleRenderer = m_bottleFill.GetComponent<Renderer>();
         switch (m_effectToApply)
         {
             case Effect.CHANGE_COLOR_TO_RED:
-                GetComponent<Renderer>().material.color = Color.red;
+                //new Color(r,g,b,a)
+                bottleRenderer.material.color = Color.red;
                 break;
             case Effect.CHANGE_COLOR_TO_BLUE:
-                GetComponent<Renderer>().material.color = Color.blue;
+                bottleRenderer.material.color = Color.blue;
+                break;
+            case Effect.CHANGE_COLOR_TO_YELLOW:
+                bottleRenderer.material.color = Color.yellow;
+                break;
+            case Effect.CHANGE_SIZE_TO_2:
+                bottleRenderer.material.color = new Color(0.9f, 0.1f, 0.9f, 0.9f);
+                break;
+            case Effect.CHANGE_SIZE_TO_0_5:
+                bottleRenderer.material.color = new Color(0.7f, 0.2f, 0.7f, 0.6f);
+                break;
+            case Effect.ANIM_JUMP:
+                bottleRenderer.material.color = Color.grey;
+                break;
+            case Effect.ANIM_FALL:
+                bottleRenderer.material.color = Color.black;
+                break;
+            case Effect.ANIM_NOD:
+                bottleRenderer.material.color = new Color(0.9f, 0.9f, 0.3f, 0.9f);
+                break;
+            case Effect.ANIM_LOOK_AT_STOMACH:
+                bottleRenderer.material.color = new Color(0.2f, 0.2f, 0.2f, 0.9f);
+                break;
+            case Effect.ANIM_SPINNING:
+                bottleRenderer.material.color = new Color(0.4f, 0.9f, 0.1f, 0.9f);
+                break;
+            case Effect.ANIM_FLYING:
+                bottleRenderer.material.color = new Color(0.1f, 0.2f, 0.9f, 0.9f);
+                break;
+            case Effect.ANIM_FLAPPING:
+                bottleRenderer.material.color = new Color(0.1f, 0.5f, 1f, 0.9f);
+                break;
+            case Effect.ANIM_JUMP_FLAPPING:
+                bottleRenderer.material.color = new Color(0.9f, 0.2f, 1f, 0.9f);
+                break;
+            case Effect.ANIM_LOOK_AT_STOMACH_GREEN:
+                bottleRenderer.material.color = new Color(0.2f, 0.9f, 0.1f, 0.9f);
+                break;
+            case Effect.ANIM_FALL_RED:
+                bottleRenderer.material.color = new Color(0.9f, 0.2f, 0.2f, 0.9f);
+                break;
+            case Effect.ANIM_SPINNING_YELLOW:
+                bottleRenderer.material.color = new Color(0.9f, 0.9f, 0.2f, 0.9f);
+                break;
+            case Effect.ANIM_SPINNING_FLAPPING:
+                bottleRenderer.material.color = new Color(0.7f, 0.3f, 0.9f, 0.9f);
+                break;
+            case Effect.ANIM_ROLLING:
+                bottleRenderer.material.color = new Color(0.1f, 0.9f, 0.2f, 0.9f);
+                break;
+            case Effect.ANIM_FLYING_SIZE_2:
+                bottleRenderer.material.color = Color.cyan;
                 break;
             default:
                 break;

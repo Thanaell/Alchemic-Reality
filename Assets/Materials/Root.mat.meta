@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 9a9408fcdb0f4c349b240bac9648223d
+=======
+guid: 5ff3cb358b1d4c447839d3b8dd8f71ff
+>>>>>>> Stashed changes
 labels:
 - ingredient
 - material

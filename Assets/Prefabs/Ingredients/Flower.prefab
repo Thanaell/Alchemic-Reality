@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6780314324633415870}
   - component: {fileID: 6780314324633415873}
   - component: {fileID: 837191908746458521}
+  - component: {fileID: 1543100054560041725}
   m_Layer: 0
   m_Name: Flower
   m_TagString: Untagged
@@ -59,11 +60,27 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6780314324633415872}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3.55, y: 0.55, z: 3.52}
   m_Center: {x: 0, y: 0.25, z: 0}
+--- !u!54 &1543100054560041725
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6780314324633415872}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &6780314324032671935
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: 0f8b6ca9ff8eb4d42b386776a1e3f2c3
+=======
+guid: d8a720039e128224ab52c3e45fb7b4ee
+>>>>>>> Stashed changes
 labels:
 - ingredient
 - nature
