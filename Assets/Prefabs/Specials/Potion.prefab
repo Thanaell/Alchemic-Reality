@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830753153248372409}
+  - component: {fileID: 344207848710086243}
   - component: {fileID: 7273455431726811373}
   - component: {fileID: 9054942727076037481}
-  - component: {fileID: 344207848710086243}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +36,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &344207848710086243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830753153247885977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71915eb2ee0cf1f448f00a2a011119f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_effectToApply: 1
+  m_bottleFill: {fileID: 830753153247885979}
+  m_materialList:
+  - {fileID: 2100000, guid: aae519b99e04cd34e9376f1305066a96, type: 2}
+  - {fileID: 2100000, guid: 528577b765f00404ba13f35871ac4983, type: 2}
+  - {fileID: 2100000, guid: 169e6c09ce7c5f447b75ffd45be144a6, type: 2}
+  - {fileID: 2100000, guid: b2fa4aa85ae99c447aa3214a9044a230, type: 2}
+  - {fileID: 2100000, guid: 3cf5063383d8af44ba857a5ba4d36b70, type: 2}
+  - {fileID: 2100000, guid: 0f7217c1497843d4193640eae2b9c7c0, type: 2}
+  - {fileID: 2100000, guid: 7832d33c69a39c34b94bd69e3747a82c, type: 2}
+  CauldronHasTimer: 0
+  waitingTimeSec: 2
 --- !u!136 &7273455431726811373
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -66,30 +90,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &344207848710086243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830753153247885977}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71915eb2ee0cf1f448f00a2a011119f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_effectToApply: 1
-  m_bottleFill: {fileID: 830753153247885979}
-  m_materialList:
-  - {fileID: 2100000, guid: aae519b99e04cd34e9376f1305066a96, type: 2}
-  - {fileID: 2100000, guid: 528577b765f00404ba13f35871ac4983, type: 2}
-  - {fileID: 2100000, guid: 169e6c09ce7c5f447b75ffd45be144a6, type: 2}
-  - {fileID: 2100000, guid: b2fa4aa85ae99c447aa3214a9044a230, type: 2}
-  - {fileID: 2100000, guid: 3cf5063383d8af44ba857a5ba4d36b70, type: 2}
-  - {fileID: 2100000, guid: 0f7217c1497843d4193640eae2b9c7c0, type: 2}
-  - {fileID: 2100000, guid: 7832d33c69a39c34b94bd69e3747a82c, type: 2}
-  CauldronHasTimer: 0
-  waitingTimeSec: 2
 --- !u!1 &830753153247885979
 GameObject:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 830753153248372413}
   - component: {fileID: 830753153247078045}
   - component: {fileID: 830753153245946973}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 830753153248372411}
   - component: {fileID: 830753153247078043}
   - component: {fileID: 830753153245946971}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Vial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 830753153248372415}
   - component: {fileID: 830753153247078047}
   - component: {fileID: 830753153245946975}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cork
   m_TagString: Untagged
   m_Icon: {fileID: 0}

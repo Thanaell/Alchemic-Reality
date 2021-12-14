@@ -7,11 +7,12 @@ public class Cage : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerEnter(Collider other)
     {
-        TestSubject testSubject = other.GetComponentInChildren<TestSubject>();
-        if (testSubject)
+        if (other.gameObject.layer == LayerMask.NameToLayer("TestSubject"))
         {
+			TestSubject testSubject = other.GetComponentInChildren<TestSubject>();
             testSubject.FetchTestSubject();
             Debug.Log("fetching test subject");
         }
+		Debug.Log("cage collided");
     }
 }

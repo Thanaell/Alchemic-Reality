@@ -164,7 +164,8 @@ public class Bottle : MonoBehaviour
     public void computeEffect(Effect effect)
     {
         m_effectToApply = effect;
-        changeColor(AlchemyBook.SearchColor(m_effectToApply));
+		applyBottleColor();
+        //changeColor(AlchemyBook.SearchColor(m_effectToApply));
 
     }
 
@@ -184,7 +185,7 @@ public class Bottle : MonoBehaviour
         computeEffect(Effect.NO_EFFECT);
     }
 
-    private void changeColor(string color)
+    /*private void changeColor(string color)
     {
         Material newMaterial = null;
 
@@ -193,13 +194,15 @@ public class Bottle : MonoBehaviour
             Material currentMat = m_bottleFill.GetComponentInChildren<Material>();
             currentMat = newMaterial;
         }
-    }
+    }*/
 
     public void OnTriggerEnter(Collider other)
     {
+		Debug.Log(other.name+" collided");
         timer = waitingTimeSec;
         if (other.gameObject.layer == LayerMask.NameToLayer("TestSubject"))
         {
+			Debug.Log("collided test subject");
             TestSubject testSubject = other.GetComponent<TestSubject>();
             if (testSubject && ! isWaiting)
             {
@@ -258,6 +261,7 @@ public class Bottle : MonoBehaviour
                 if (testSubject)
                 {
                     usePotion(testSubject);
+					Debug.Log("using potion");
                 }
 
                 if (CauldronHasTimer)
