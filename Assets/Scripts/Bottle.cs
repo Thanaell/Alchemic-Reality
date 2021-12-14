@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bottle : MonoBehaviour
 {
     //Effect m_effectToApply;
-    public Effect m_effectToApply = Effect.CHANGE_COLOR_TO_RED; //for test
+    public Effect m_effectToApply; //for test
 
     private static Dictionary<string, Material> PotionColor = new Dictionary<string, Material>();
 
@@ -155,7 +155,8 @@ public class Bottle : MonoBehaviour
             case Effect.ANIM_FLYING_SIZE_2:
                 bottleRenderer.material.color = Color.cyan;
                 break;
-            default:
+            default: // no effect
+				bottleRenderer.material.color = new Color(0.1f, 0.1f, 0.9f, 0.5f);
                 break;
         }
     }
@@ -198,7 +199,6 @@ public class Bottle : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-		Debug.Log(other.name+" collided");
         timer = waitingTimeSec;
         if (other.gameObject.layer == LayerMask.NameToLayer("TestSubject"))
         {
@@ -213,6 +213,7 @@ public class Bottle : MonoBehaviour
         } else if (other.gameObject.layer == LayerMask.NameToLayer("Cauldron"))
         {
             Cauldron cauldron = other.GetComponent<Cauldron>();
+			Debug.Log(cauldron.GetIngredients()+", capacity: "+cauldron.GetIngredients().Capacity);
             if(!CauldronHasTimer)
             {
                 if (cauldron)
@@ -223,8 +224,10 @@ public class Bottle : MonoBehaviour
                         {
                             m_isWater = false;
                             m_justCreated = true;
+                            Debug.Log("just created potion");
                         }
                         cauldron.ResetIngredients();
+                        Debug.Log("reset ingredients 2nd way");
                     }
                 }
             } else
