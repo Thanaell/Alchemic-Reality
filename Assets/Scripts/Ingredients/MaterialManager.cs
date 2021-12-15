@@ -32,8 +32,10 @@ public class MaterialManager : MonoBehaviour
         {
             foreach (GameObject component in ingredientComponent)
             {
-                Material currentMat = component.GetComponentInChildren<Material>();
-                currentMat = burnedMaterial;
+                //Material currentMat = component.GetComponentInChildren<Material>();
+                //currentMat = burnedMaterial;
+				var objectRenderer = component.GetComponent<Renderer>();
+				objectRenderer.material=burnedMaterial;
             }
         }
     }
