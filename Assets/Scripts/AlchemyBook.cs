@@ -2,11 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct PotionAction
+{
+    public AlchemyBook.ActionOnTestSubject action;
+    public int sicknessValue;
+
+    public PotionAction(AlchemyBook.ActionOnTestSubject action, int sicknessValue)
+    {
+        this.action = action;
+        this.sicknessValue = sicknessValue;
+    }
+}
 public class AlchemyBook
 {
 
     static Dictionary<Effect, string> ColorBook = new Dictionary<Effect, string>();
-    static Dictionary<Effect, ActionOnTestSubject> ActionOnTestSubjectBook = new Dictionary<Effect, ActionOnTestSubject>();
+    static Dictionary<Effect, PotionAction> ActionOnTestSubjectBook = new Dictionary<Effect,PotionAction>();
 
     static List<KeyValuePair<List<Ingredient>, Effect>> RecipeBook = new List<KeyValuePair<List<Ingredient>, Effect>>();
 
@@ -34,131 +45,131 @@ public class AlchemyBook
     private static void registerActionOnTestSubject()
     {
         ActionOnTestSubject action = DelDoNothing;
-        ActionOnTestSubjectBook.Add(Effect.NO_EFFECT, action);
+        addPotionAction(Effect.NO_EFFECT, action);
 
         // action change color
         action = delegate (TestSubject testSubject)
         {
             changeColorTo(testSubject.gameObject, Color.red);
         };
-        ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_RED, action);
+        addPotionAction(Effect.CHANGE_COLOR_TO_RED, action);
 
         action = delegate (TestSubject testSubject)
         {
             changeColorTo(testSubject.gameObject, Color.yellow);
         };
-        ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_YELLOW, action);
+        addPotionAction(Effect.CHANGE_COLOR_TO_YELLOW, action);
 
         action = delegate (TestSubject testSubject)
         {
             changeColorTo(testSubject.gameObject, Color.blue);
         };
-        ActionOnTestSubjectBook.Add(Effect.CHANGE_COLOR_TO_BLUE, action);
+        addPotionAction(Effect.CHANGE_COLOR_TO_BLUE, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("size_0_25");
         };
-        ActionOnTestSubjectBook.Add(Effect.CHANGE_SIZE_TO_0_25, action);
+        addPotionAction(Effect.CHANGE_SIZE_TO_0_25, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("size_0_5");
         };
-        ActionOnTestSubjectBook.Add(Effect.CHANGE_SIZE_TO_0_5, action);
+        addPotionAction(Effect.CHANGE_SIZE_TO_0_5, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("size_2");
         };
-        ActionOnTestSubjectBook.Add(Effect.CHANGE_SIZE_TO_2, action);
+        addPotionAction(Effect.CHANGE_SIZE_TO_2, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("fly");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_FLYING, action);
+        addPotionAction(Effect.ANIM_FLYING, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("jump");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_JUMP, action);
+        addPotionAction(Effect.ANIM_JUMP, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("fall");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_FALL, action);
+        addPotionAction(Effect.ANIM_FALL, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("nod");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_NOD, action);
+        addPotionAction(Effect.ANIM_NOD, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("stomach");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_LOOK_AT_STOMACH, action);
+        addPotionAction(Effect.ANIM_LOOK_AT_STOMACH, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("spin");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_SPINNING, action);
+        addPotionAction(Effect.ANIM_SPINNING, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("flapping");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_FLAPPING, action);
+        addPotionAction(Effect.ANIM_FLAPPING, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("jumpFlapping");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_JUMP_FLAPPING, action);
+        addPotionAction(Effect.ANIM_JUMP_FLAPPING, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("stomach");
             changeColorTo(testSubject.gameObject, Color.green);
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_LOOK_AT_STOMACH_GREEN, action);
+        addPotionAction(Effect.ANIM_LOOK_AT_STOMACH_GREEN, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("fall");
             changeColorTo(testSubject.gameObject, Color.red);
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_FALL_RED, action);
+        addPotionAction(Effect.ANIM_FALL_RED, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("spin");
             changeColorTo(testSubject.gameObject, Color.yellow);
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_SPINNING_YELLOW, action);
+        addPotionAction(Effect.ANIM_SPINNING_YELLOW, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("spinFlapping");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_SPINNING_FLAPPING, action);
+        addPotionAction(Effect.ANIM_SPINNING_FLAPPING, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("roll");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_ROLLING, action);
+        addPotionAction(Effect.ANIM_ROLLING, action);
 
         action = delegate (TestSubject testSubject)
         {
             testSubject.GetAnimator().Play("flySize2");
         };
-        ActionOnTestSubjectBook.Add(Effect.ANIM_FLYING_SIZE_2, action);
+        addPotionAction(Effect.ANIM_FLYING_SIZE_2, action);
 
     }
 
@@ -264,14 +275,14 @@ public class AlchemyBook
         return null;
     }
 
-    public static ActionOnTestSubject SearchActionOnTestSubject(Effect effect)
+    public static PotionAction SearchActionOnTestSubject(Effect effect)
     {
-        ActionOnTestSubject action;
+        PotionAction action;
         if (ActionOnTestSubjectBook.TryGetValue(effect, out action))
         {
             return action;
         }
-        return null;
+        return new PotionAction(null, 0);
     }
 
     public static Effect SearchRecipe(List<Ingredient> ingredientsList)
@@ -316,6 +327,16 @@ public class AlchemyBook
         return false;
     }
 
+
+    private static void addPotionAction(Effect effect, ActionOnTestSubject action)
+    {
+        addPotionAction(effect, action, 1);
+    }
+
+    private static void addPotionAction(Effect effect, ActionOnTestSubject action, int sicknessValue)
+    {
+        ActionOnTestSubjectBook.Add(effect, new PotionAction(action, sicknessValue));
+    }
 
     /*________________________Actions on testSubject page_______________________________________________________*/
 

@@ -172,8 +172,10 @@ public class Bottle : MonoBehaviour
 
     private void usePotion(TestSubject testSubject)
     {
-        testSubject.applyEffect(m_effectToApply);
-        resetPotion();
+        if (testSubject.applyEffect(m_effectToApply)) //test subject drank the potion eg. not dead
+        {
+            resetPotion();
+        }
         
     }
 
